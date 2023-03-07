@@ -1,13 +1,13 @@
 variable "visibility" {
   description = "(Optional) Can be 'public', 'private' or 'internal'"
-  type = string
-  default = "private"
+  type        = string
+  default     = "private"
 }
 
 variable "delete_branch_on_merge" {
   description = "(optional) Automatically dele head breanch after pull request"
-  type = bool
-  default = false
+  type        = bool
+  default     = false
 }
 
 variable "default_topics" {
@@ -32,34 +32,34 @@ variable "repository" {
       is_alphanumeric     = bool
     })))
     branch_protections = optional(map(object({
-      allows_deletions         = optional(bool)
-      required_linear_history  = optional(bool)
-      enforce_admins           = optional(bool)
+      allows_deletions        = optional(bool)
+      required_linear_history = optional(bool)
+      enforce_admins          = optional(bool)
       required_pull_request_reviews = optional(object({
-        dismiss_stale_reviews          = optional(bool)
-        require_code_owner_reviews     = optional(bool)
+        dismiss_stale_reviews           = optional(bool)
+        require_code_owner_reviews      = optional(bool)
         required_approving_review_count = optional(number)
-    }))
-    required_status_checks       = optional(object({
-      contexts = optional(list(string))
-      strict   = optional(bool)
-    }))
-    delete_branch_on_merge = optional(bool)
-  })))
-}))
+      }))
+      required_status_checks = optional(object({
+        contexts = optional(list(string))
+        strict   = optional(bool)
+      }))
+      delete_branch_on_merge = optional(bool)
+    })))
+  }))
 }
 
 variable "default_branch_protections" {
   type = map(object({
-    allows_deletions            = optional(bool)
-    enforce_admins              = optional(bool)
-    required_linear_history     = optional(bool)
+    allows_deletions        = optional(bool)
+    enforce_admins          = optional(bool)
+    required_linear_history = optional(bool)
     required_pull_request_reviews = optional(object({
-      dismiss_stale_reviews          = optional(bool)
-      require_code_owner_reviews     = optional(bool)
+      dismiss_stale_reviews           = optional(bool)
+      require_code_owner_reviews      = optional(bool)
       required_approving_review_count = optional(number)
     }))
-    required_status_checks       = optional(object({
+    required_status_checks = optional(object({
       contexts = optional(list(string))
       strict   = optional(bool)
     }))
