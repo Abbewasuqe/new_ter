@@ -1,42 +1,22 @@
-name: terraform
+name: Plan / Test On PR
 
 on:
-  push:
+  pull_request:
     branches:
       - main
-  pull_request:
 
 jobs:
-  terraform:
-    name: terraform
-    runs-on: ubuntu-latest
+  lint:
+    name: Lint
+    runs-on: ubuntu-20.04
     steps:
-    - name: checkout
-      uses: actions/checkout@v2
+      - name: Check out code
+        uses: actions/checkout@v2
 
-    - name: setup terraform
-      uses: hashicorp/setup-terraform@v1
-      with:
-        terraform_version: 0.12.31
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.0.9
 
-    - name: terraform format
-      id: fmt
-      run: terraform fmt -check
-      continue-on-error: true
-
-    - name: terraform init
-      id: init
-      run: terraform init
-
-    - name: terraform workspace
-      id: workspace
-      run: terraform workspace select prd
-
-    - name: terraform validate
-      id: validate
-      run: terraform validate -no-color
-
-    - name: terraform plan
-      id: plan
-      run: terraform plan -no-color
-      continue-on-error: true
+      - name: Run terraform fmt check
+        run: terraform fmt -check -diff -recursive ./terraform
