@@ -1,22 +1,14 @@
-name: Plan / Test On PR
+name: Terraform Format Check
 
-on:
-  pull_request:
-    branches:
-      - main
+on: [push, pull_request]
 
 jobs:
-  lint:
-    name: Lint
-    runs-on: ubuntu-20.04
+  format_check:
+    runs-on: ubuntu-latest
     steps:
-      - name: Check out code
-        uses: actions/checkout@v2
-
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v1
-        with:
-          terraform_version: 1.0.9
-
-      - name: Run terraform fmt check
-        run: terraform fmt -check -diff -recursive ./terraform
+    - uses: actions/checkout@v2
+    - uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: '1.0.7'
+    - name: Terraform fmt check
+      run: terraform fmt -check -recursive
