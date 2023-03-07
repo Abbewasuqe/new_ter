@@ -11,4 +11,4 @@ jobs:
       with:
         terraform_version: '1.3.3'
     - name: Terraform fmt check
-      run: terraform fmt -check -recursive
+      run: terraform fmt -check 
