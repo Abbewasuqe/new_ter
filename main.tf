@@ -33,13 +33,13 @@ module "repositories" {
     name = "enzo"
     description = "second repo"
       default_branch_name = "master"
-    delete_branch_on_merge = false
+      delete_branch_on_merge = false
   },
   {
     name = "test"
     description = "test"
     default_branch_name = "main"
-    delete_branch_on_merge = true
+      delete_branch_on_merge = true
   }
   ]
 }
