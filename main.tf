@@ -26,14 +26,20 @@ module "repositories" {
   repository = [{
     name = "my-repo"
     description = "my new repo"
-    default_branch_name = "main"
+      default_branch_name = "main"
     delete_branch_on_merge = true
   },
   {
     name = "enzo"
     description = "second repo"
-    default_branch_name = "master"
+      default_branch_name = "master"
     delete_branch_on_merge = false
+  },
+  {
+    name = "test"
+    description = "test"
+    default_branch_name = "main"
+    delete_branch_on_merge = true
   }
   ]
 }
