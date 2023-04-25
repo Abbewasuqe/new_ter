@@ -1,16 +1,8 @@
-## Requirements
-
-No requirements.
-
 ## Providers
 
 | Name | Version |
 |------|---------|
 | <a name="provider_github"></a> [github](#provider\_github) | 5.18.3 |
-
-## Modules
-
-No modules.
 
 ## Resources
 
