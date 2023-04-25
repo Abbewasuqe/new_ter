@@ -23,11 +23,12 @@ module "repositories" {
       required_linear_history = false
     }
   }
-  repository = [{
-    name                   = "my-repo"
-    description            = "my new repo"
-    default_branch_name    = "main"
-    delete_branch_on_merge = true
+  repository = [
+    {
+          name                   = "my-repo"
+          description            = "my new repo"
+          default_branch_name    = "main"
+          delete_branch_on_merge = true
     },
     {
       name                   = "enzo"
